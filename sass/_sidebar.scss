@@ -1,0 +1,166 @@
+.sidebar {
+    background-color: $color-primary;
+    grid-column: sidebar-start / sidebar-end;
+    grid-row: 1 / -1;
+
+    display: flex;
+    justify-content: center;
+
+    @media only screen and(max-width: $bp-large) {
+        grid-column: 1/-1;
+        grid-row: 1/2;
+    }  
+}
+
+.navigation {
+
+    &__button {
+        background-color: transparent;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: .6rem;
+        left: 0;
+        z-index: 2000;
+        cursor: pointer;
+
+        @media only screen and(max-width: $bp-large) {
+            top: 0rem;
+            position: fixed;
+        } 
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 1.1rem;
+        left: 1.1rem;
+        background-image: radial-gradient($color-primary, $color-primary-dark);
+        z-index: 1000;
+        transition: all 0.8s;
+
+        @media only screen and(max-width: $bp-large) {
+            top: .5rem;
+            position: fixed;
+        } 
+    }
+
+    &__nav {
+        height: 100vh;
+        //width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: -1500;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        
+        opacity: 0;
+        width: 0;
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {  //cool button hover animation (fade in, fade out)
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 50%, #fff 50%);
+            background-size: 230%;
+            transition: all .4s;
+
+            @media only screen and(max-width: $bp-small) {
+                font-size: 2.2rem;
+            } 
+        }
+
+        span {
+            margin-right: 1.5rem;
+            display: inline-block;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+
+    }
+
+&__icon {
+    position: relative;
+    
+    &-1,
+    &-2,
+    &-3 {
+        width: 3rem;
+        height: 2px;
+        background-color: #fff;
+        display: inline-block;
+        position: absolute;
+        left: 2.5rem;
+        margin-top: 3.5rem;
+        transition: all .2s;
+    }
+    
+    &-1 { top: -1.2rem; }
+    &-3 { top: 1.2rem; }
+    
+}
+
+
+    &__button:hover &__icon-1 {
+        top: -1rem;
+    }
+    &__button:hover &__icon-3 {
+        top: 1rem;
+    }
+    
+}
+
+
+
+
+
+.navigation__button .hidden1 {   //la linea din mijlocul butonul de navigatie
+    background-color: transparent;
+}
+
+.navigation__button .rotate1 {  //la a 3a linie din butonul de navigatie
+    top: 0rem;
+    transform: rotate(135deg);
+}
+
+
+.navigation__button .rotate2 {  //la prima linie din butonul de navigatie
+    top: 0rem;
+    transform: rotate(-135deg);
+}
+.navigation .hidden {   //la navigatie, lista
+    opacity: 1;
+    width: 100%;
+    z-index: 1500;
+}
+.scale {
+    transform: scale(80);  // la backgroundul navigatiei
+}
